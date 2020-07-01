@@ -7,10 +7,9 @@ default: &default
 
 development:
   <<: *default
-  host: ec2-107-22-7-9.compute-1.amazonaws.com
-  database: d4h3dq0eca9rli
-  username: tczrmxklaylige
-  password: 0df3692b7bb64e1abb219a2d94122b41947847767372c0b6ca664d7af8a5b03b
+  database: agunsaEcommerce_development
+  username: nicolas
+  password: Meatlover3626
 
 test:
   <<: *default
