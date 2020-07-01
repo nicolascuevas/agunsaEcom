@@ -1,0 +1,134 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    
+    <div class="col-12">
+      <div class="form-group">
+        <%= form.label :customer_id %>
+        <%= form.collection_select :customer_id, Customer.order(name: :asc), :id, :name, {include_blank: false}, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :product_code, "Codigo Producto" %>
+        <%= form.text_field :product_code, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :name, "Nombre" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :super_family, "Super Familia" %>
+        <%= form.text_field :super_family, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :family, "Familia" %>
+        <%= form.text_field :family, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :sub_family, "SubFamilia" %>
+        <%= form.text_field :sub_family, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="field">
+        <%= form.label :is_expire, "¿Expira?" %>
+        <%= form.check_box :is_expire %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :liters, "Litros" %>
+        <%= form.text_field :liters, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :state, "Estado" %>
+        <%= form.text_field :state, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :units_per_box, "Unidades por caja" %>
+        <%= form.text_field :units_per_box, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :weight, "Peso (Kg)" %>
+        <%= form.text_field :weight, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :height, "Alto (cm)" %>
+        <%= form.text_field :height, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :width, "Ancho (cm)" %>
+        <%= form.text_field :width, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :depth, "Largo (cm)" %>
+        <%= form.text_field :depth, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :boxes_per_pallet, "Cajas por pallet" %>
+        <%= form.text_field :boxes_per_pallet, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="form-group">
+        <%= form.label :boxes_per_pallet_floor, "Cajas por pata" %>
+        <%= form.text_field :boxes_per_pallet_floor, class: "form-control" %>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit "Guardar", class: "btn btn-success" %>
+  </div>
+<% end %>

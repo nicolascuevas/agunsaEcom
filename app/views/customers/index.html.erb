@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clientes</h1>
+<%= link_to 'Agregar Cliente', new_customer_path, class:"btn btn-sm btn-success" %>
+<hr>
+
+<div class="table-responsive">
+
+
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Codigo Cliente</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.name %></td>
+          <td><%= customer.client_code %></td>
+          <td><%= link_to 'Ver', customer, class:"btn btn-sm btn-info" %>
+          <%= link_to 'Editar', edit_customer_path(customer), class:"btn btn-sm btn-warning" %>
+          <%= link_to 'Borrar', customer, method: :delete, class:"btn btn-sm btn-danger", data: { confirm: '¿Estas Seguro?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+

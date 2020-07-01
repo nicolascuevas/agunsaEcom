@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Editar', edit_product_path(@product), class: "btn btn-sm btn-warning" %> |
+<%= link_to 'Volver', sku_finder_path, class: "btn btn-sm btn-info" %>
+
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @product.customer.name %>
+</p>
+
+<p>
+  <strong>Codigo producto:</strong>
+  <%= @product.product_code %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Super Familia:</strong>
+  <%= @product.super_family %>
+</p>
+
+<p>
+  <strong>Familia:</strong>
+  <%= @product.family %>
+</p>
+
+<p>
+  <strong>Sub Familia:</strong>
+  <%= @product.sub_family %>
+</p>
+
+<p>
+  <strong>¿Expira?:</strong>
+  <%= @product.is_expire %>
+</p>
+
+<p>
+  <strong>Litros:</strong>
+  <%= @product.liters %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @product.state %>
+</p>
+
+<p>
+  <strong>Unidades por caja:</strong>
+  <%= @product.units_per_box %>
+</p>
+
+<p>
+  <strong>Peso (Kg):</strong>
+  <%= @product.weight %>
+</p>
+
+<p>
+  <strong>Alto(cm):</strong>
+  <%= @product.height %>
+</p>
+
+<p>
+  <strong>Ancho (cm):</strong>
+  <%= @product.width %>
+</p>
+
+<p>
+  <strong>Largo(cm:</strong>
+  <%= @product.depth %>
+</p>
+
+<p>
+  <strong>Cajas por pallet:</strong>
+  <%= @product.boxes_per_pallet %>
+</p>
+
+<p>
+  <strong>Cajas por pata:</strong>
+  <%= @product.boxes_per_pallet_floor %>
+</p>

@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<% if @products.count > 0 %>
+
+<h1>Productos Encontrados</h1>
+<%= link_to 'Buscar otro Producto', sku_finder_path, class:"btn btn-sm btn-success" %>
+
+
+<div class="table-responsive">
+
+
+  <table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Super familiia</th>
+      <th>Family</th>
+      <th>Sub familia</th>
+      <th>Is expire</th>
+      <th>Litros</th>
+      <th>Estado</th>
+      <th>Unidades por caja</th>
+      <th>Peso</th>
+      <th>Alto(cm)</th>
+      <th>Ancho(cm)</th>
+      <th>Largo(cm)</th>
+      <th>Cajas por pallet</th>
+      <th>Cajas por pata</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to 'Editar', edit_product_path(product), class: " btn btn-sm btn-warning" %><%= product.customer.name %></td>
+        <td><%= link_to product.product_code, product %></td>
+        <td><%= product.name %></td>
+        <td><%= product.super_family %></td>
+        <td><%= product.family %></td>
+        <td><%= product.sub_family %></td>
+        <td><%= product.is_expire %></td>
+        <td><%= product.liters %></td>
+        <td><%= product.state %></td>
+        <td><%= product.units_per_box %></td>
+        <td><%= product.weight %></td>
+        <td><%= product.height %></td>
+        <td><%= product.width %></td>
+        <td><%= product.depth %></td>
+        <td><%= product.boxes_per_pallet %></td>
+        <td><%= product.boxes_per_pallet_floor %></td>
+        <td><%= link_to 'Ver', product, class: "btn btn-sm btn-info" %>
+        <%= link_to 'Editar', edit_product_path(product), class: " btn btn-sm btn-warning" %>
+        <%= link_to 'Borrar', product, method: :delete, class:"btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+
+
+<% else %>
+
+<h1>No se encontraron coincidencias</h1>
+<%= link_to 'Buscar otro Producto', sku_finder_path, class:"btn btn-sm btn-success" %>
+
+<% end%>

@@ -1,0 +1,11 @@
+<h2>Buscar Producto</h2>
+
+<%= form_tag "/products", method: :get do  %>
+
+	<div class="form-group">
+	    <label>SKU</label>
+	    <%= text_field_tag "sku", "", class:"form-control" %>
+	</div>
+	<%= submit_tag "Buscar", class:"btn btn-sm btn-info" %>
+
+<% end %>
