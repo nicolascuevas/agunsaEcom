@@ -20,6 +20,4 @@ test:
 #
 production:
   <<: *default
-  database: agunsaEcommerce_production
-  username: agunsaEcommerce
-  password: <%= ENV['AGUNSAECOMMERCE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
