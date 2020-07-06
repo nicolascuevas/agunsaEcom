@@ -28,6 +28,7 @@
       <th>Largo(cm)</th>
       <th>Cajas por pallet</th>
       <th>Cajas por pata</th>
+      <th>Actualizacion</th>
       <th></th>
     </tr>
   </thead>
@@ -51,6 +52,7 @@
         <td><%= product.depth %></td>
         <td><%= product.boxes_per_pallet %></td>
         <td><%= product.boxes_per_pallet_floor %></td>
+        <td><%= product.updated_at %></td>
         <td><%= link_to 'Ver', product, class: "btn btn-sm btn-info" %>
         <%= link_to 'Editar', edit_product_path(product), class: " btn btn-sm btn-warning" %>
         <%= link_to 'Borrar', product, method: :delete, class:"btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %></td>

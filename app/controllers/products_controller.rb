@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.order(updated_at: :desc)
     if params[:sku].present?
       @products = Product.where("product_code like ?", "%"+params[:sku]+"%")
     end
