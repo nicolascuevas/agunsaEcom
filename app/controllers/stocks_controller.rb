@@ -4,7 +4,7 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    @stocks = Stock.all
+    @stocks = Stock.all.paginate(page: params[:page], per_page: 50)
   end
 
   # GET /stocks/1
@@ -49,6 +49,32 @@ class StocksController < ApplicationController
         format.json { render json: @stock.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def import_agunsa_stock
+    @stock = AgunsaManager::GetStock.call()
+    @stock.each do |stock_data|
+      @warehouse_location = WarehouseLocation.where(name: stock_data['codigo_ubicacion']).first
+      @product = Product.where("LOWER(product_code) LIKE LOWER(?)", "%#{stock_data['codigo_producto'].tr(" ", "")}%").first
+      if !@product
+      puts "#####"
+        puts stock_data['codigo_producto']
+      end
+      @warehouse_location.stocks.find_or_initialize_by({  
+        warehouse_location_id: @warehouse_location.id,
+        product_id: @product.id
+      }) do |stock|
+        stock.quantity = stock_data['cantidad_producto']
+        stock.incoming_quantity = stock_data['cantidad_producto_entrando']
+        stock.outgoing_quantity = stock_data['cantidad_producto_saliendo']
+        stock.blocked_quantity = stock_data['Cantidad_producto_bloqueado']
+        stock.lot_code = stock_data['Codigo_lote']
+        stock.lot_elaboration_date = stock_data['Fecha_elaboracion_lote']
+        stock.lot_expiration_date = stock_data['Fecha_vencimiento_lote']
+        stock.save
+      end
+    end
+
   end
 
   # DELETE /stocks/1

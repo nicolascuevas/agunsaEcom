@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "import_agunsa_products", to: "products#import_agunsa_products", as: "import_agunsa_products"
   post "import_agunsa_warehouses", to: "warehouses#import_agunsa_warehouses", as: "import_agunsa_warehouses"
   post "import_agunsa_warehouse_locations", to: "warehouse_locations#import_agunsa_warehouse_locations", as: "import_agunsa_warehouse_locations"
+  post "import_agunsa_stock", to: "stocks#import_agunsa_stock", as: "import_agunsa_stock"
 
   resources :products
 

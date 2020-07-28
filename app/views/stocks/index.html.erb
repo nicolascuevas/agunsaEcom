@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Stocks</h1>
+<%= link_to 'Actualizar Stocks', import_agunsa_stock_path, method: :post, class:"btn btn-sm btn-warning" %>
+<%= link_to 'New Stock', new_stock_path %>
+
 
 <table>
   <thead>
@@ -21,7 +24,7 @@
   <tbody>
     <% @stocks.each do |stock| %>
       <tr>
-        <td><%= stock.product_id %></td>
+        <td><%= stock.product.product_code %></td>
         <td><%= stock.warehouse_location_id %></td>
         <td><%= stock.quantity %></td>
         <td><%= stock.incoming_quantity %></td>
@@ -40,4 +43,8 @@
 
 <br>
 
-<%= link_to 'New Stock', new_stock_path %>
+<div class="row">
+  <div class="col">
+    <%= will_paginate @stocks %>
+  </div>
+</div>
