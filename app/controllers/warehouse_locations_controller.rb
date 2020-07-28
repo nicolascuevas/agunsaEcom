@@ -4,7 +4,7 @@ class WarehouseLocationsController < ApplicationController
   # GET /warehouse_locations
   # GET /warehouse_locations.json
   def index
-    @warehouse_locations = WarehouseLocation.all
+    @warehouse_locations = WarehouseLocation.all.paginate(page: params[:page], per_page: 50)
   end
 
   # GET /warehouse_locations/1
@@ -59,6 +59,26 @@ class WarehouseLocationsController < ApplicationController
       format.html { redirect_to warehouse_locations_url, notice: 'Warehouse location was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+    def import_agunsa_warehouse_locations
+    @warehouse = Warehouse.find(params[:warehouse_id])
+    @warehouse_locations = AgunsaManager::GetWarehouseLocations.call(@warehouse.name)
+    @warehouse_locations.each do |location_info|
+      @warehouse.warehouse_locations.find_or_initialize_by({
+            name: location_info['codigo_ubicacion']
+      }) do |warehouse_location|
+        warehouse_location.customer_id = @warehouse.customer_id
+        warehouse_location.height = location_info['alto'].to_f
+        warehouse_location.width = location_info['ancho'].to_f
+        warehouse_location.depth = location_info['profundidad'].to_f
+        warehouse_location.location_type = location_info['tipo']
+        warehouse_location.kind = location_info['forma']
+
+        warehouse_location.save
+      end
+    end
+
   end
 
   private

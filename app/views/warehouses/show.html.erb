@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Importar Ubicaciones', import_agunsa_warehouse_locations_path(warehouse_id: @warehouse.id), method: :post, class:"btn btn-sm btn-warning" %>
+
 <p>
   <strong>Customer:</strong>
   <%= @warehouse.customer_id %>
