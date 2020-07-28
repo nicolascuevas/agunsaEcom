@@ -7,7 +7,12 @@ default: &default
 
 development:
   <<: *default
-  url: postgres://tczrmxklaylige:0df3692b7bb64e1abb219a2d94122b41947847767372c0b6ca664d7af8a5b03b@ec2-107-22-7-9.compute-1.amazonaws.com:5432/d4h3dq0eca9rli
+  #url: postgres://tczrmxklaylige:0df3692b7bb64e1abb219a2d94122b41947847767372c0b6ca664d7af8a5b03b@ec2-107-22-7-9.compute-1.amazonaws.com:5432/d4h3dq0eca9rli
+  adapter: postgresql
+  encoding: unicode
+  database: agunsaEcommerce_development
+  pool: 5
+
 
 test:
   <<: *default

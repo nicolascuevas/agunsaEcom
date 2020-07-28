@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Importar Productos', import_agunsa_products_path(customer_id: @customer.id), method: :post, class:"btn btn-sm btn-warning" %>
+
 <p>
   <strong>Name:</strong>
   <%= @customer.name %>
@@ -13,6 +15,11 @@
 <p>
   <strong>Address:</strong>
   <%= @customer.address %>
+</p>
+
+<p>
+  <strong>Cantidad Productoos:</strong>
+  <%= @customer.products.count %>
 </p>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

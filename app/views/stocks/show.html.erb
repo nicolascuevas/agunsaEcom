@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @stock.product_id %>
+</p>
+
+<p>
+  <strong>Warehouse location:</strong>
+  <%= @stock.warehouse_location_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @stock.quantity %>
+</p>
+
+<p>
+  <strong>Incoming quantity:</strong>
+  <%= @stock.incoming_quantity %>
+</p>
+
+<p>
+  <strong>Outgoing quantity:</strong>
+  <%= @stock.outgoing_quantity %>
+</p>
+
+<p>
+  <strong>Blocked quantity:</strong>
+  <%= @stock.blocked_quantity %>
+</p>
+
+<p>
+  <strong>Lot code:</strong>
+  <%= @stock.lot_code %>
+</p>
+
+<p>
+  <strong>Lot elaboration date:</strong>
+  <%= @stock.lot_elaboration_date %>
+</p>
+
+<p>
+  <strong>Lot expiration date:</strong>
+  <%= @stock.lot_expiration_date %>
+</p>
+
+<%= link_to 'Edit', edit_stock_path(@stock) %> |
+<%= link_to 'Back', stocks_path %>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Warehouse:</strong>
+  <%= @warehouse_location.warehouse_id %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @warehouse_location.customer_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @warehouse_location.name %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @warehouse_location.height %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @warehouse_location.width %>
+</p>
+
+<p>
+  <strong>Depth:</strong>
+  <%= @warehouse_location.depth %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @warehouse_location.type %>
+</p>
+
+<p>
+  <strong>Kind:</strong>
+  <%= @warehouse_location.kind %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @warehouse_location.volume %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @warehouse_location.area %>
+</p>
+
+<p>
+  <strong>Pallet:</strong>
+  <%= @warehouse_location.pallet %>
+</p>
+
+<%= link_to 'Edit', edit_warehouse_location_path(@warehouse_location) %> |
+<%= link_to 'Back', warehouse_locations_path %>

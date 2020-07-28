@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Warehouses</h1>
+<%= link_to 'Actualizar Bodegas', import_agunsa_warehouses_path, method: :post, class:"btn btn-sm btn-warning" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warehouses.each do |warehouse| %>
+      <tr>
+        <td><%= warehouse.customer_id %></td>
+        <td><%= warehouse.name %></td>
+        <td><%= link_to 'Show', warehouse %></td>
+        <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
+        <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Warehouse', new_warehouse_path %>

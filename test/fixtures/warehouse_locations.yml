@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  warehouse: one
+  customer: one
+  name: MyString
+  height: 9.99
+  width: 9.99
+  depth: 9.99
+  type: 
+  kind: MyString
+  volume: 9.99
+  area: 9.99
+  pallet: 9.99
+
+two:
+  warehouse: two
+  customer: two
+  name: MyString
+  height: 9.99
+  width: 9.99
+  depth: 9.99
+  type: 
+  kind: MyString
+  volume: 9.99
+  area: 9.99
+  pallet: 9.99

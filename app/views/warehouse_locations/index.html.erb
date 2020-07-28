@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Warehouse Locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Warehouse</th>
+      <th>Customer</th>
+      <th>Name</th>
+      <th>Height</th>
+      <th>Width</th>
+      <th>Depth</th>
+      <th>Type</th>
+      <th>Kind</th>
+      <th>Volume</th>
+      <th>Area</th>
+      <th>Pallet</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warehouse_locations.each do |warehouse_location| %>
+      <tr>
+        <td><%= warehouse_location.warehouse_id %></td>
+        <td><%= warehouse_location.customer_id %></td>
+        <td><%= warehouse_location.name %></td>
+        <td><%= warehouse_location.height %></td>
+        <td><%= warehouse_location.width %></td>
+        <td><%= warehouse_location.depth %></td>
+        <td><%= warehouse_location.type %></td>
+        <td><%= warehouse_location.kind %></td>
+        <td><%= warehouse_location.volume %></td>
+        <td><%= warehouse_location.area %></td>
+        <td><%= warehouse_location.pallet %></td>
+        <td><%= link_to 'Show', warehouse_location %></td>
+        <td><%= link_to 'Edit', edit_warehouse_location_path(warehouse_location) %></td>
+        <td><%= link_to 'Destroy', warehouse_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Warehouse Location', new_warehouse_location_path %>

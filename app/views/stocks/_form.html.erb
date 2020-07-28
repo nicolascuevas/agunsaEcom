@@ -1,0 +1,62 @@
+<%= form_with(model: stock, local: true) do |form| %>
+  <% if stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(stock.errors.count, "error") %> prohibited this stock from being saved:</h2>
+
+      <ul>
+        <% stock.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.text_field :product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :warehouse_location_id %>
+    <%= form.collection_select :warehouse_location_id, WarehouseLocation.order(name: :asc), :id, :name, {include_blank: false}, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :incoming_quantity %>
+    <%= form.number_field :incoming_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :outgoing_quantity %>
+    <%= form.number_field :outgoing_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :blocked_quantity %>
+    <%= form.number_field :blocked_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lot_code %>
+    <%= form.text_field :lot_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lot_elaboration_date %>
+    <%= form.datetime_select :lot_elaboration_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lot_expiration_date %>
+    <%= form.datetime_select :lot_expiration_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

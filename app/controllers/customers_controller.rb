@@ -62,6 +62,18 @@ class CustomersController < ApplicationController
     end
   end
 
+
+  def import_agunsa_customers
+    customers = AgunsaManager::GetCustomers.call()
+    customers.each do |customer_data|
+      Customer.create_or_find_by({  client_code: customer_data['codigo_cliente'].tr(" ", ""),
+                                    name: customer_data['nombre'].tr("  ", "")
+                                  })
+      puts customer_data['codigo_cliente'].tr(" ", "")
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer

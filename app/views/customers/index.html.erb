@@ -2,6 +2,8 @@
 
 <h1>Clientes</h1>
 <%= link_to 'Agregar Cliente', new_customer_path, class:"btn btn-sm btn-success" %>
+<%= link_to 'Actualizar Clientes', import_agunsa_customers_path, method: :post, class:"btn btn-sm btn-warning" %>
+
 <hr>
 
 <div class="table-responsive">
@@ -12,6 +14,7 @@
       <tr>
         <th>Nombre</th>
         <th>Codigo Cliente</th>
+        <th>Productos</th>
         <th></th>
       </tr>
     </thead>
@@ -21,6 +24,7 @@
         <tr>
           <td><%= customer.name %></td>
           <td><%= customer.client_code %></td>
+          <td><%= customer.products.count %></td>
           <td><%= link_to 'Ver', customer, class:"btn btn-sm btn-info" %>
           <%= link_to 'Editar', edit_customer_path(customer), class:"btn btn-sm btn-warning" %>
           <%= link_to 'Borrar', customer, method: :delete, class:"btn btn-sm btn-danger", data: { confirm: '¿Estas Seguro?' } %></td>
@@ -28,6 +32,7 @@
       <% end %>
     </tbody>
   </table>
+  
 </div>
 <br>
 

@@ -42,7 +42,25 @@
               <li class="nav-item">
                 <%= link_to products_path, class: "nav-link" do %>
                     <span data-feather="file"></span>
-                    Productos
+                    Maestro Productos
+                  <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to warehouses_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Bodegas
+                  <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to warehouse_locations_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Ubicaciones
+                  <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to stocks_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Stock
                   <% end %>
               </li>
             </ul>

@@ -1,0 +1,72 @@
+<%= form_with(model: warehouse_location, local: true) do |form| %>
+  <% if warehouse_location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(warehouse_location.errors.count, "error") %> prohibited this warehouse_location from being saved:</h2>
+
+      <ul>
+        <% warehouse_location.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :warehouse_id %>
+    <%= form.collection_select :warehouse_id, Warehouse.order(name: :asc), :id, :name, {include_blank: false}, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.collection_select :customer_id, Customer.order(name: :asc), :id, :name, {include_blank: false}, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :width %>
+    <%= form.text_field :width %>
+  </div>
+
+  <div class="field">
+    <%= form.label :depth %>
+    <%= form.text_field :depth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kind %>
+    <%= form.text_field :kind %>
+  </div>
+
+  <div class="field">
+    <%= form.label :volume %>
+    <%= form.text_field :volume %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area %>
+    <%= form.text_field :area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pallet %>
+    <%= form.text_field :pallet %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
