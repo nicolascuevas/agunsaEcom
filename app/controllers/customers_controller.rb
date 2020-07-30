@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    @customers = Customer.all.order(name: :asc)
   end
 
   # GET /customers/1
@@ -65,12 +65,7 @@ class CustomersController < ApplicationController
 
   def import_agunsa_customers
     customers = AgunsaManager::GetCustomers.call()
-    customers.each do |customer_data|
-      Customer.create_or_find_by({  client_code: customer_data['codigo_cliente'].tr(" ", ""),
-                                    name: customer_data['nombre'].tr("  ", "")
-                                  })
-      puts customer_data['codigo_cliente'].tr(" ", "")
-    end
+    Customer.import_agunsa_customers(customers)
 
   end
 

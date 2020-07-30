@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'reports/warehouse', to: "reports#warehouse", as: "warehouse_report"
   resources :stocks
   resources :warehouse_locations
   resources :warehouses

@@ -7,6 +7,10 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
 
@@ -32,6 +36,12 @@
                   <span data-feather="home"></span>
                   Inicio <span class="sr-only">(current)</span>
                 </a>
+              </li>
+              <li class="nav-item">
+                  <%= link_to warehouse_report_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Reporte Bodega
+                  <% end %>
               </li>
               <li class="nav-item">
                   <%= link_to customers_path, class: "nav-link" do %>

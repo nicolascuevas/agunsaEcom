@@ -53,24 +53,36 @@ class StocksController < ApplicationController
 
   def import_agunsa_stock
     @stock = AgunsaManager::GetStock.call()
+    number = 1
     @stock.each do |stock_data|
       @warehouse_location = WarehouseLocation.where(name: stock_data['codigo_ubicacion']).first
-      @product = Product.where("LOWER(product_code) LIKE LOWER(?)", "%#{stock_data['codigo_producto'].tr(" ", "")}%").first
+      @product = @warehouse_location.customer.products.where("LOWER(product_code) LIKE LOWER(?)", "%#{stock_data['codigo_producto'].tr(" ", "")}%").first
+      puts "Numero: #### #{number}"
+      number +=1
+      if !@warehouse_location
+        puts "####333#####"
+      end
       if !@product
-      puts "#####"
+      puts "####333#####"
         puts stock_data['codigo_producto']
+      end
+      if @warehouse_location.stocks.where(warehouse_location_id: @warehouse_location.id, product_id: @product.id).count > 0
+        puts "######repetidooo######"
+        puts @product.id
+        puts stock_data['codigo_ubicacion']
+        puts "######repetidooo######"
       end
       @warehouse_location.stocks.find_or_initialize_by({  
         warehouse_location_id: @warehouse_location.id,
-        product_id: @product.id
+        product_id: @product.id,
+        lot_code: stock_data['Codigo_lote'].tr(" ", ""),
+        lot_elaboration_date: stock_data['Fecha_elaboracion_lote'],
+        lot_expiration_date: stock_data['Fecha_vencimiento_lote']
       }) do |stock|
         stock.quantity = stock_data['cantidad_producto']
         stock.incoming_quantity = stock_data['cantidad_producto_entrando']
         stock.outgoing_quantity = stock_data['cantidad_producto_saliendo']
         stock.blocked_quantity = stock_data['Cantidad_producto_bloqueado']
-        stock.lot_code = stock_data['Codigo_lote']
-        stock.lot_elaboration_date = stock_data['Fecha_elaboracion_lote']
-        stock.lot_expiration_date = stock_data['Fecha_vencimiento_lote']
         stock.save
       end
     end

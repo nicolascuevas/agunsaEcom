@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_032926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_stocks_on_product_id"
-    t.index ["warehouse_location_id", "product_id"], name: "index_stocks_on_warehouse_location_id_and_product_id", unique: true
+    t.index ["warehouse_location_id", "product_id", "lot_code", "lot_elaboration_date", "lot_expiration_date"], name: "location_product_lot_index", unique: true
     t.index ["warehouse_location_id"], name: "index_stocks_on_warehouse_location_id"
   end
 

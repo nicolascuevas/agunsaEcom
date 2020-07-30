@@ -63,14 +63,8 @@ class WarehousesController < ApplicationController
 
   def import_agunsa_warehouses
     @warehouses = AgunsaManager::GetWarehouses.call()
-    @warehouses.each do |warehouse_data|
-      @customer = Customer.where( "client_code like (?)", warehouse_data['codigo_cliente'].tr(" ", "") ).first
-      if @customer
-        @customer.warehouses.create_or_find_by({ name: warehouse_data['codigo_bodega'].tr(" ", "") })
-      else
-        puts "No hay Cliente #{warehouse_data['codigo_cliente'].tr(" ", "")}"
-      end
-    end
+    Warehouse.import_agunsa_warehouses(@warehouses)
+    
   end
   
 

@@ -8,6 +8,7 @@
     <tr>
       <th>Customer</th>
       <th>Name</th>
+      <th>Locations</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= warehouse.customer.client_code %></td>
         <td><%= warehouse.name %></td>
+        <td><%= warehouse.warehouse_locations.count %></td>
         <td><%= link_to 'Show', warehouse %></td>
         <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
         <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
