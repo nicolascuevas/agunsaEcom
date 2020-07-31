@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Communes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Region</th>
+      <th>Name</th>
+      <th>Sil code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @communes.each do |commune| %>
+      <tr>
+        <td><%= commune.region_id %></td>
+        <td><%= commune.name %></td>
+        <td><%= commune.sil_code %></td>
+        <td><%= link_to 'Show', commune %></td>
+        <td><%= link_to 'Edit', edit_commune_path(commune) %></td>
+        <td><%= link_to 'Destroy', commune, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Commune', new_commune_path %>

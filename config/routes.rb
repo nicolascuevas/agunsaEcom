@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :customer_clients
+  resources :communes
+  resources :regions
+  resources :countries
   get 'reports/warehouse', to: "reports#warehouse", as: "warehouse_report"
   resources :stocks
   resources :warehouse_locations

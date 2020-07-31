@@ -29,3 +29,9 @@
 	  font-size: 3.5rem;
 	}
 }
+
+
+.filters th input,.filters th select {
+	width: 100%;
+	max-width: 150px;
+}

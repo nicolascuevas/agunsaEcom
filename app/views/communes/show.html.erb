@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @commune.region_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @commune.name %>
+</p>
+
+<p>
+  <strong>Sil code:</strong>
+  <%= @commune.sil_code %>
+</p>
+
+<%= link_to 'Edit', edit_commune_path(@commune) %> |
+<%= link_to 'Back', communes_path %>

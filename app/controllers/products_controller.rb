@@ -4,10 +4,22 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.order(updated_at: :desc).paginate(page: params[:page], per_page: 50)
-    if params[:sku].present?
-      @products = Product.where("product_code like ?", "%"+params[:sku]+"%")
-    end
+    @products = Product.all
+    @products = @products.where("product_code LIKE ?", "%"+params[:sku]+"%") if params[:sku].present?
+    @products = @products.where(customer_id: params[:customer_id]) if params[:customer_id].present?
+    @products = @products.where(units_per_box: params[:units_per_box]) if params[:units_per_box].present?
+    @products = @products.where("name ILIKE ?", "%"+params[:name]+"%") if params[:name].present?
+
+    @products = @products.where("weight ILIKE ?", "%"+params[:weight]+"%") if params[:weight].present?
+    @products = @products.where("width ILIKE ?", "%"+params[:width]+"%") if params[:width].present?
+    @products = @products.where("height ILIKE ?", "%"+params[:height]+"%") if params[:height].present?
+    @products = @products.where("depth ILIKE ?", "%"+params[:depth]+"%") if params[:depth].present?
+
+    @products = @products.where("depth ILIKE ?", "%"+params[:depth]+"%") if params[:depth].present?
+    @products = @products.where("depth ILIKE ?", "%"+params[:depth]+"%") if params[:depth].present?
+
+    @products = @products.order(name: :desc).paginate(page: params[:page], per_page: 50)
+
   end
 
   def sku_finder

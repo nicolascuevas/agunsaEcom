@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_28_032926) do
+ActiveRecord::Schema.define(version: 2020_07_31_203328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "communes", force: :cascade do |t|
+    t.bigint "region_id", null: false
+    t.string "name"
+    t.string "sil_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["region_id"], name: "index_communes_on_region_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "customer_clients", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.string "name"
+    t.string "last_name"
+    t.string "identifier"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_customer_clients_on_customer_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -54,6 +81,15 @@ ActiveRecord::Schema.define(version: 2020_07_28_032926) do
     t.string "unit_type", default: "UNIT"
     t.string "alternative_code"
     t.index ["customer_id", "product_code"], name: "index_products_on_customer_id_and_product_code", unique: true
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.bigint "country_id", null: false
+    t.string "name"
+    t.string "sil_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_regions_on_country_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -101,6 +137,9 @@ ActiveRecord::Schema.define(version: 2020_07_28_032926) do
     t.index ["customer_id"], name: "index_warehouses_on_customer_id"
   end
 
+  add_foreign_key "communes", "regions"
+  add_foreign_key "customer_clients", "customers"
+  add_foreign_key "regions", "countries"
   add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "warehouse_locations"
   add_foreign_key "warehouse_locations", "customers"

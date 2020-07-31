@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  region: one
+  name: 
+  sil_code: MyString
+
+two:
+  region: two
+  name: 
+  sil_code: MyString
