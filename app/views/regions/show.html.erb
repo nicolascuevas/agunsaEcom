@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Edit', edit_country_region_path(@country, @region) %> |
+<%= link_to 'Back', country_path(@country) %>
+
+<hr>
+
+
 <p>
   <strong>Country:</strong>
   <%= @region.country_id %>
@@ -14,6 +20,30 @@
   <strong>Sil code:</strong>
   <%= @region.sil_code %>
 </p>
+<br>
 
-<%= link_to 'Edit', edit_region_path(@region) %> |
-<%= link_to 'Back', regions_path %>
+
+<h1>Coumunas</h1>
+<%= link_to 'New Commune', new_country_region_commune_path(@country,  @region) %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sil code</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @communes.each do |commune| %>
+      <tr>
+        <td><%= commune.name %></td>
+        <td><%= commune.sil_code %></td>
+        <td><%= link_to 'Show', country_region_commune_path(@country, @region, commune) %>
+        <%= link_to 'Edit', edit_country_region_commune_path(@country, @region, commune) %>
+        <%= link_to 'Destroy', country_region_commune_path(@country, @region, commune), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

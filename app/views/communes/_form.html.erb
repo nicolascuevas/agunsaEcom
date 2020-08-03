@@ -1,4 +1,4 @@
-<%= form_with(model: commune, local: true) do |form| %>
+<%= form_with(model: [@country, @region, commune], local: true) do |form| %>
   <% if commune.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(commune.errors.count, "error") %> prohibited this commune from being saved:</h2>
@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :country_id %>
+    <%= @country.name %>
+  </div>
+  <div class="field">
     <%= form.label :region_id %>
-    <%= form.text_field :region_id %>
+    <%= @region.name %>
   </div>
 
   <div class="field">

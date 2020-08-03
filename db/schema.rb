@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_203328) do
+ActiveRecord::Schema.define(version: 2020_07_31_204537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 2020_07_31_203328) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "custmer_client_addresses", force: :cascade do |t|
+    t.bigint "customer_client_id", null: false
+    t.bigint "commune_id", null: false
+    t.string "street"
+    t.string "number"
+    t.string "address_detail"
+    t.decimal "lat"
+    t.decimal "long"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["commune_id"], name: "index_custmer_client_addresses_on_commune_id"
+    t.index ["customer_client_id"], name: "index_custmer_client_addresses_on_customer_client_id"
   end
 
   create_table "customer_clients", force: :cascade do |t|
@@ -138,6 +152,8 @@ ActiveRecord::Schema.define(version: 2020_07_31_203328) do
   end
 
   add_foreign_key "communes", "regions"
+  add_foreign_key "custmer_client_addresses", "communes"
+  add_foreign_key "custmer_client_addresses", "customer_clients"
   add_foreign_key "customer_clients", "customers"
   add_foreign_key "regions", "countries"
   add_foreign_key "stocks", "products"

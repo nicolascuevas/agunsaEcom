@@ -1,10 +1,12 @@
 class CommunesController < ApplicationController
+  before_action :set_country
+  before_action :set_region
   before_action :set_commune, only: [:show, :edit, :update, :destroy]
 
   # GET /communes
   # GET /communes.json
   def index
-    @communes = Commune.all
+    @communes = @region.communes.all
   end
 
   # GET /communes/1
@@ -14,7 +16,7 @@ class CommunesController < ApplicationController
 
   # GET /communes/new
   def new
-    @commune = Commune.new
+    @commune = @region.communes.new
   end
 
   # GET /communes/1/edit
@@ -24,11 +26,11 @@ class CommunesController < ApplicationController
   # POST /communes
   # POST /communes.json
   def create
-    @commune = Commune.new(commune_params)
+    @commune = @region.communes.new(commune_params)
 
     respond_to do |format|
       if @commune.save
-        format.html { redirect_to @commune, notice: 'Commune was successfully created.' }
+        format.html { redirect_to country_region_commune_path(@country, @region, @commune), notice: 'Commune was successfully created.' }
         format.json { render :show, status: :created, location: @commune }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class CommunesController < ApplicationController
   def update
     respond_to do |format|
       if @commune.update(commune_params)
-        format.html { redirect_to @commune, notice: 'Commune was successfully updated.' }
+        format.html { redirect_to country_region_commune_path(@country, @region, @commune), notice: 'Commune was successfully updated.' }
         format.json { render :show, status: :ok, location: @commune }
       else
         format.html { render :edit }
@@ -56,15 +58,24 @@ class CommunesController < ApplicationController
   def destroy
     @commune.destroy
     respond_to do |format|
-      format.html { redirect_to communes_url, notice: 'Commune was successfully destroyed.' }
+      format.html { redirect_to country_region_path(@country, @region), notice: 'Commune was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
+    def set_country
+      @country = Country.find(params[:country_id])
+    end
+
+    def set_region
+      @region = @country.regions.find(params[:region_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_commune
-      @commune = Commune.find(params[:id])
+      @commune = @region.communes.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

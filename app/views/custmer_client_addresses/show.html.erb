@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer client:</strong>
+  <%= @custmer_client_address.customer_client_id %>
+</p>
+
+<p>
+  <strong>Commune:</strong>
+  <%= @custmer_client_address.commune_id %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @custmer_client_address.street %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @custmer_client_address.number %>
+</p>
+
+<p>
+  <strong>Address detail:</strong>
+  <%= @custmer_client_address.address_detail %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @custmer_client_address.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @custmer_client_address.long %>
+</p>
+
+<%= link_to 'Edit', edit_custmer_client_address_path(@custmer_client_address) %> |
+<%= link_to 'Back', custmer_client_addresses_path %>

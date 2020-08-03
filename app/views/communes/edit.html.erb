@@ -2,5 +2,5 @@
 
 <%= render 'form', commune: @commune %>
 
-<%= link_to 'Show', @commune %> |
-<%= link_to 'Back', communes_path %>
+<%= link_to 'Show', country_region_commune_path(@country, @region, @commune) %> |
+<%= link_to 'Back', country_region_path(@country, @region) %>
