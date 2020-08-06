@@ -4,7 +4,7 @@ class WarehouseLocation < ApplicationRecord
 
   belongs_to :warehouse
   belongs_to :customer
-  has_many :stocks
+  has_many :stocks, dependent: :destroy
   has_many :products, through: :stocks
 
 
