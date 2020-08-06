@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_204537) do
+ActiveRecord::Schema.define(version: 2020_08_06_155805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,43 @@ ActiveRecord::Schema.define(version: 2020_07_31_204537) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_code"], name: "index_customers_on_client_code", unique: true
+  end
+
+  create_table "delivered_order_products", force: :cascade do |t|
+    t.bigint "delivered_order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.string "lot_code"
+    t.string "observation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["delivered_order_id"], name: "index_delivered_order_products_on_delivered_order_id"
+    t.index ["product_id"], name: "index_delivered_order_products_on_product_id"
+  end
+
+  create_table "delivered_orders", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "warehouse_id", null: false
+    t.datetime "distribution_center_out_date"
+    t.datetime "digitation_date"
+    t.datetime "customer_visit_date"
+    t.datetime "order_programmed_date"
+    t.integer "delivery_number"
+    t.integer "picking_order_number"
+    t.bigint "customer_client_id", null: false
+    t.string "delivery_backup_document"
+    t.string "delivery_aditional_backup_document"
+    t.string "delivery_observation"
+    t.integer "order_number"
+    t.string "order_backup_document"
+    t.string "aditional_order_backup_document"
+    t.string "order_observation"
+    t.integer "delivery_route_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_client_id"], name: "index_delivered_orders_on_customer_client_id"
+    t.index ["customer_id"], name: "index_delivered_orders_on_customer_id"
+    t.index ["warehouse_id"], name: "index_delivered_orders_on_warehouse_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -155,6 +192,11 @@ ActiveRecord::Schema.define(version: 2020_07_31_204537) do
   add_foreign_key "custmer_client_addresses", "communes"
   add_foreign_key "custmer_client_addresses", "customer_clients"
   add_foreign_key "customer_clients", "customers"
+  add_foreign_key "delivered_order_products", "delivered_orders"
+  add_foreign_key "delivered_order_products", "products"
+  add_foreign_key "delivered_orders", "customer_clients"
+  add_foreign_key "delivered_orders", "customers"
+  add_foreign_key "delivered_orders", "warehouses"
   add_foreign_key "regions", "countries"
   add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "warehouse_locations"

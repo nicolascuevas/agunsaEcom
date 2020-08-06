@@ -1,0 +1,102 @@
+<%= form_with(model: delivered_order, local: true) do |form| %>
+  <% if delivered_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(delivered_order.errors.count, "error") %> prohibited this delivered_order from being saved:</h2>
+
+      <ul>
+        <% delivered_order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.text_field :customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :warehouse_id %>
+    <%= form.text_field :warehouse_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :distribution_center_out_date %>
+    <%= form.datetime_select :distribution_center_out_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :digitation_date %>
+    <%= form.datetime_select :digitation_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_visit_date %>
+    <%= form.datetime_select :customer_visit_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_programmed_date %>
+    <%= form.datetime_select :order_programmed_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_number %>
+    <%= form.number_field :delivery_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picking_order_number %>
+    <%= form.number_field :picking_order_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_client_id %>
+    <%= form.text_field :customer_client_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_backup_document %>
+    <%= form.text_field :delivery_backup_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_aditional_backup_document %>
+    <%= form.text_field :delivery_aditional_backup_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_observation %>
+    <%= form.text_field :delivery_observation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_number %>
+    <%= form.number_field :order_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_backup_document %>
+    <%= form.text_field :order_backup_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aditional_order_backup_document %>
+    <%= form.text_field :aditional_order_backup_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_observation %>
+    <%= form.text_field :order_observation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_route_number %>
+    <%= form.number_field :delivery_route_number %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

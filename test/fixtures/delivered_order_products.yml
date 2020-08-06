@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delivered_order: one
+  product: one
+  quantity: 1
+  lot_code: MyString
+
+two:
+  delivered_order: two
+  product: two
+  quantity: 1
+  lot_code: MyString

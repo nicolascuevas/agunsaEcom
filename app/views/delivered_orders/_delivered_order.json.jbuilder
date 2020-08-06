@@ -1,0 +1,2 @@
+json.extract! delivered_order, :id, :customer_id, :warehouse_id, :distribution_center_out_date, :digitation_date, :customer_visit_date, :order_programmed_date, :delivery_number, :picking_order_number, :customer_client_id, :delivery_backup_document, :delivery_aditional_backup_document, :delivery_observation, :order_number, :order_backup_document, :aditional_order_backup_document, :order_observation, :delivery_route_number, :created_at, :updated_at
+json.url delivered_order_url(delivered_order, format: :json)

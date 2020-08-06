@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Delivered Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Warehouse</th>
+      <th>Distribution center out date</th>
+      <th>Digitation date</th>
+      <th>Customer visit date</th>
+      <th>Order programmed date</th>
+      <th>Delivery number</th>
+      <th>Picking order number</th>
+      <th>Customer client</th>
+      <th>Delivery backup document</th>
+      <th>Delivery aditional backup document</th>
+      <th>Delivery observation</th>
+      <th>Order number</th>
+      <th>Order backup document</th>
+      <th>Aditional order backup document</th>
+      <th>Order observation</th>
+      <th>Delivery route number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @delivered_orders.each do |delivered_order| %>
+      <tr>
+        <td><%= delivered_order.customer_id %></td>
+        <td><%= delivered_order.warehouse_id %></td>
+        <td><%= delivered_order.distribution_center_out_date %></td>
+        <td><%= delivered_order.digitation_date %></td>
+        <td><%= delivered_order.customer_visit_date %></td>
+        <td><%= delivered_order.order_programmed_date %></td>
+        <td><%= delivered_order.delivery_number %></td>
+        <td><%= delivered_order.picking_order_number %></td>
+        <td><%= delivered_order.customer_client_id %></td>
+        <td><%= delivered_order.delivery_backup_document %></td>
+        <td><%= delivered_order.delivery_aditional_backup_document %></td>
+        <td><%= delivered_order.delivery_observation %></td>
+        <td><%= delivered_order.order_number %></td>
+        <td><%= delivered_order.order_backup_document %></td>
+        <td><%= delivered_order.aditional_order_backup_document %></td>
+        <td><%= delivered_order.order_observation %></td>
+        <td><%= delivered_order.delivery_route_number %></td>
+        <td><%= link_to 'Show', delivered_order %></td>
+        <td><%= link_to 'Edit', edit_delivered_order_path(delivered_order) %></td>
+        <td><%= link_to 'Destroy', delivered_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Delivered Order', new_delivered_order_path %>

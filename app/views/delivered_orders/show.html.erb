@@ -1,0 +1,89 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @delivered_order.customer_id %>
+</p>
+
+<p>
+  <strong>Warehouse:</strong>
+  <%= @delivered_order.warehouse_id %>
+</p>
+
+<p>
+  <strong>Distribution center out date:</strong>
+  <%= @delivered_order.distribution_center_out_date %>
+</p>
+
+<p>
+  <strong>Digitation date:</strong>
+  <%= @delivered_order.digitation_date %>
+</p>
+
+<p>
+  <strong>Customer visit date:</strong>
+  <%= @delivered_order.customer_visit_date %>
+</p>
+
+<p>
+  <strong>Order programmed date:</strong>
+  <%= @delivered_order.order_programmed_date %>
+</p>
+
+<p>
+  <strong>Delivery number:</strong>
+  <%= @delivered_order.delivery_number %>
+</p>
+
+<p>
+  <strong>Picking order number:</strong>
+  <%= @delivered_order.picking_order_number %>
+</p>
+
+<p>
+  <strong>Customer client:</strong>
+  <%= @delivered_order.customer_client_id %>
+</p>
+
+<p>
+  <strong>Delivery backup document:</strong>
+  <%= @delivered_order.delivery_backup_document %>
+</p>
+
+<p>
+  <strong>Delivery aditional backup document:</strong>
+  <%= @delivered_order.delivery_aditional_backup_document %>
+</p>
+
+<p>
+  <strong>Delivery observation:</strong>
+  <%= @delivered_order.delivery_observation %>
+</p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @delivered_order.order_number %>
+</p>
+
+<p>
+  <strong>Order backup document:</strong>
+  <%= @delivered_order.order_backup_document %>
+</p>
+
+<p>
+  <strong>Aditional order backup document:</strong>
+  <%= @delivered_order.aditional_order_backup_document %>
+</p>
+
+<p>
+  <strong>Order observation:</strong>
+  <%= @delivered_order.order_observation %>
+</p>
+
+<p>
+  <strong>Delivery route number:</strong>
+  <%= @delivered_order.delivery_route_number %>
+</p>
+
+<%= link_to 'Edit', edit_delivered_order_path(@delivered_order) %> |
+<%= link_to 'Back', delivered_orders_path %>

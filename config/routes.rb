@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :delivered_orders
   resources :custmer_client_addresses
   resources :customer_clients
   resources :countries do
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   post "import_agunsa_warehouses", to: "warehouses#import_agunsa_warehouses", as: "import_agunsa_warehouses"
   post "import_agunsa_warehouse_locations", to: "warehouse_locations#import_agunsa_warehouse_locations", as: "import_agunsa_warehouse_locations"
   post "import_agunsa_stock", to: "stocks#import_agunsa_stock", as: "import_agunsa_stock"
+  post "import_agunsa_delivered_orders", to: "delivered_orders#import_agunsa_delivered_orders", as: "import_agunsa_delivered_orders"
 
   resources :products
 

@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  warehouse: one
+  distribution_center_out_date: 2020-08-06 11:52:20
+  digitation_date: 2020-08-06 11:52:20
+  customer_visit_date: 2020-08-06 11:52:20
+  order_programmed_date: 2020-08-06 11:52:20
+  delivery_number: 1
+  picking_order_number: 1
+  customer_client: one
+  delivery_backup_document: MyString
+  delivery_aditional_backup_document: MyString
+  delivery_observation: MyString
+  order_number: 1
+  order_backup_document: MyString
+  aditional_order_backup_document: MyString
+  order_observation: MyString
+  delivery_route_number: 1
+
+two:
+  customer: two
+  warehouse: two
+  distribution_center_out_date: 2020-08-06 11:52:20
+  digitation_date: 2020-08-06 11:52:20
+  customer_visit_date: 2020-08-06 11:52:20
+  order_programmed_date: 2020-08-06 11:52:20
+  delivery_number: 1
+  picking_order_number: 1
+  customer_client: two
+  delivery_backup_document: MyString
+  delivery_aditional_backup_document: MyString
+  delivery_observation: MyString
+  order_number: 1
+  order_backup_document: MyString
+  aditional_order_backup_document: MyString
+  order_observation: MyString
+  delivery_route_number: 1
