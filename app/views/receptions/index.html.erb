@@ -11,6 +11,8 @@
       <th>Recepcion</th>
       <th>RRP</th>
       <th>OR</th>
+      <th>Lineas</th>
+      <th>Items</th>
       <th>Documento Ref Cliente</th>
       <th>Respaldo Re</th>
       <th>Inicio Descarga</th>
@@ -20,17 +22,26 @@
   <tbody>
     <% @receptions.each do |reception| %>
       <tr>
-        <td><%= link_to reception.customer.name, customer_path(reception.customer) %></td>
+        <td><%= link_to reception.customer.client_code, customer_path(reception.customer) %></td>
         <td><%= link_to reception.warehouse.name, warehouse_path(reception.warehouse) %></td>
         <td><%= link_to reception.reception_number, reception_path(reception) %></td>
         <td><%= link_to reception.rrp_number, reception_path(reception) %></td>
         <td><%= link_to reception.recepcion_order_number, reception_path(reception) %></td>
+        <td><%= reception.reception_products.count %></td>
+        <td><%= reception.reception_products.sum(:quantity) %></td>
         <td><%= reception.customer_reference_document %></td>
         <td><%= reception.recepcion_backup_document %></td>
         <td><%= reception.start_unload %></td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
 
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= will_paginate @products %>
+  </div>
 </div>

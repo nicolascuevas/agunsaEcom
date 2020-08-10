@@ -4,12 +4,13 @@ class ReceptionsController < ApplicationController
   # GET /receptions
   # GET /receptions.json
   def index
-    @receptions = Reception.all
+    @receptions = Reception.all.order(reception_number: :desc).paginate(page: params[:page], per_page: 50)
   end
 
   # GET /receptions/1
   # GET /receptions/1.json
   def show
+    @reception_products = @reception.reception_products
   end
 
   # GET /receptions/new
