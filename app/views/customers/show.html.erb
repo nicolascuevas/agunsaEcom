@@ -2,6 +2,7 @@
 
 <%= link_to 'Importar Productos', import_agunsa_products_path(customer_id: @customer.id), method: :post, class:"btn btn-sm btn-warning" %>
 <%= link_to 'Importar Entregas', import_agunsa_delivered_orders_path(customer_id: @customer.id), method: :post, class:"btn btn-sm btn-warning" %>
+<%= link_to 'Importar Recepciones', import_agunsa_receptions_path(customer_id: @customer.id), method: :post, class:"btn btn-sm btn-warning" %>
 
 <p>
   <strong>Name:</strong>

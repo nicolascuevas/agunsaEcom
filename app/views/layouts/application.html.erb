@@ -8,8 +8,10 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,400;1,500;1,700&display=swap" rel="stylesheet">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
@@ -19,7 +21,7 @@
 
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">AGUNSA</a>
+      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3 text-center" href="#"><img style=" height: 30px; " src="<%= asset_path('agunsa.png') %>"></a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -44,9 +46,27 @@
                   <% end %>
               </li>
               <li class="nav-item">
+                  <%= link_to weekly_delivered_orders_report_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Reporte Ventas por semana
+                  <% end %>
+              </li>
+              <li class="nav-item">
                   <%= link_to customers_path, class: "nav-link" do %>
                     <span data-feather="file"></span>
                     Clientes
+                  <% end %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to delivered_orders_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Entregas
+                  <% end %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to receptions_path, class: "nav-link" do %>
+                    <span data-feather="file"></span>
+                    Recepciones
                   <% end %>
               </li>
               <li class="nav-item">

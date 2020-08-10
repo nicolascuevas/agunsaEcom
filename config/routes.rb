@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :receptions
   resources :delivered_orders
   resources :custmer_client_addresses
   resources :customer_clients
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get 'reports/warehouse', to: "reports#warehouse", as: "warehouse_report"
+  get 'reports/weekly_delivered_orders', to: "reports#weekly_delivered_orders", as: "weekly_delivered_orders_report"
   resources :stocks
   resources :warehouse_locations
   resources :warehouses
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   post "import_agunsa_warehouse_locations", to: "warehouse_locations#import_agunsa_warehouse_locations", as: "import_agunsa_warehouse_locations"
   post "import_agunsa_stock", to: "stocks#import_agunsa_stock", as: "import_agunsa_stock"
   post "import_agunsa_delivered_orders", to: "delivered_orders#import_agunsa_delivered_orders", as: "import_agunsa_delivered_orders"
+  post "import_agunsa_receptions", to: "receptions#import_agunsa_receptions", as: "import_agunsa_receptions"
 
   resources :products
 

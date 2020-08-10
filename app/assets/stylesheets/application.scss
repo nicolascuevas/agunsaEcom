@@ -15,6 +15,7 @@
  *= require_self
  */
 
+
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -34,4 +35,8 @@
 .filters th input,.filters th select {
 	width: 100%;
 	max-width: 150px;
+}
+
+body {
+  font-family: 'Oswald', sans-serif !important;
 }

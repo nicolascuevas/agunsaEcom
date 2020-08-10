@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
 	has_many :warehouses, dependent: :destroy
 	has_many :warehouse_locations
 	has_many :delivered_orders
+	has_many :receptions
 
 
 

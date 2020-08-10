@@ -16,4 +16,19 @@ class WarehouseLocation < ApplicationRecord
     self.area = self.width * self.depth
 	end
 
+  def self.set_values_to_racks
+
+    WarehouseLocation.where("name ~* ?", '^\d{6}$').order(name: :asc).each do |wl|
+      wl.level = wl.name[5]
+      wl.aisle = wl.name[0..1]
+      wl.section = wl.name[2..3]
+      p wl.name[4]
+      wl.save
+    end
+    return nil
+  end
+
+  
+
+
 end

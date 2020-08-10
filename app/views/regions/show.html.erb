@@ -24,14 +24,15 @@
 
 
 <h1>Coumunas</h1>
-<%= link_to 'New Commune', new_country_region_commune_path(@country,  @region) %>
+<%= link_to 'Nueva Comuna', new_country_region_commune_path(@country,  @region) %>
 
-<table>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Sil code</th>
-      <th></th>
+      <th>Nombre</th>
+      <th>Codigo SIL</th>
+
     </tr>
   </thead>
 
@@ -40,10 +41,9 @@
       <tr>
         <td><%= commune.name %></td>
         <td><%= commune.sil_code %></td>
-        <td><%= link_to 'Show', country_region_commune_path(@country, @region, commune) %>
-        <%= link_to 'Edit', edit_country_region_commune_path(@country, @region, commune) %>
-        <%= link_to 'Destroy', country_region_commune_path(@country, @region, commune), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>

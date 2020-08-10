@@ -7,5 +7,9 @@ class ReportsController < ApplicationController
 
   end
 
+  def weekly_delivered_orders
+    @customers = Customer.all.order(name: :asc)
+  end
+
 
 end

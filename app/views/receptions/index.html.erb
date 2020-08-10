@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Receptions</h1>
+
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Cliente</th>
+      <th>Warehouse</th>
+      <th>Recepcion</th>
+      <th>RRP</th>
+      <th>OR</th>
+      <th>Documento Ref Cliente</th>
+      <th>Respaldo Re</th>
+      <th>Inicio Descarga</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @receptions.each do |reception| %>
+      <tr>
+        <td><%= link_to reception.customer.name, customer_path(reception.customer) %></td>
+        <td><%= link_to reception.warehouse.name, warehouse_path(reception.warehouse) %></td>
+        <td><%= link_to reception.reception_number, reception_path(reception) %></td>
+        <td><%= link_to reception.rrp_number, reception_path(reception) %></td>
+        <td><%= link_to reception.recepcion_order_number, reception_path(reception) %></td>
+        <td><%= reception.customer_reference_document %></td>
+        <td><%= reception.recepcion_backup_document %></td>
+        <td><%= reception.start_unload %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

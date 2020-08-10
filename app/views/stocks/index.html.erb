@@ -5,11 +5,13 @@
 <%= link_to 'New Stock', new_stock_path %>
 
 
-<table>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th>Product</th>
       <th>Warehouse location</th>
+      <th>codigo</th>
+      <th>Producto</th>
       <th>Quantity</th>
       <th>Incoming quantity</th>
       <th>Outgoing quantity</th>
@@ -17,15 +19,15 @@
       <th>Lot code</th>
       <th>Lot elaboration date</th>
       <th>Lot expiration date</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @stocks.each do |stock| %>
       <tr>
-        <td><%= stock.product.product_code %></td>
-        <td><%= stock.warehouse_location_id %></td>
+        <td><%= link_to stock.warehouse_location.name, warehouse_location_path(stock.warehouse_location) %></td>
+        <td><%= link_to stock.product.product_code, product_path(stock.product) %></td>
+        <td><%= link_to stock.product.name, product_path(stock.product) %></td>
         <td><%= stock.quantity %></td>
         <td><%= stock.incoming_quantity %></td>
         <td><%= stock.outgoing_quantity %></td>
@@ -33,14 +35,11 @@
         <td><%= stock.lot_code %></td>
         <td><%= stock.lot_elaboration_date %></td>
         <td><%= stock.lot_expiration_date %></td>
-        <td><%= link_to 'Show', stock %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <div class="row">

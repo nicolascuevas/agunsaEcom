@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  warehouse: one
+  rrp_number: 1
+  guia_aga_o_fa: 1
+  customer_reference_document: MyString
+  recepcion_backup_document: MyString
+  start_unload: 2020-08-10 17:57:07
+  finish_unload: 2020-08-10 17:57:07
+  digitation_date: 2020-08-10 17:57:07
+  reception_number: 1
+  origin: MyString
+  recepcion_order_number: 1
+  reception_observation: MyString
+  rrp_observation: MyString
+  reception_order_observation: MyString
+  container_seal: MyString
+  recepcion_order_date: 2020-08-10 17:57:07
+  reception_order_backup_document: MyString
+  ctnr_code: 1
+
+two:
+  customer: two
+  warehouse: two
+  rrp_number: 1
+  guia_aga_o_fa: 1
+  customer_reference_document: MyString
+  recepcion_backup_document: MyString
+  start_unload: 2020-08-10 17:57:07
+  finish_unload: 2020-08-10 17:57:07
+  digitation_date: 2020-08-10 17:57:07
+  reception_number: 1
+  origin: MyString
+  recepcion_order_number: 1
+  reception_observation: MyString
+  rrp_observation: MyString
+  reception_order_observation: MyString
+  container_seal: MyString
+  recepcion_order_date: 2020-08-10 17:57:07
+  reception_order_backup_document: MyString
+  ctnr_code: 1

@@ -1,0 +1,112 @@
+<%= form_with(model: reception, local: true) do |form| %>
+  <% if reception.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reception.errors.count, "error") %> prohibited this reception from being saved:</h2>
+
+      <ul>
+        <% reception.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.text_field :customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :warehouse_id %>
+    <%= form.text_field :warehouse_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rrp_number %>
+    <%= form.number_field :rrp_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guia_aga_o_fa %>
+    <%= form.number_field :guia_aga_o_fa %>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_reference_document %>
+    <%= form.text_field :customer_reference_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recepcion_backup_document %>
+    <%= form.text_field :recepcion_backup_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_unload %>
+    <%= form.datetime_select :start_unload %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finish_unload %>
+    <%= form.datetime_select :finish_unload %>
+  </div>
+
+  <div class="field">
+    <%= form.label :digitation_date %>
+    <%= form.datetime_select :digitation_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reception_number %>
+    <%= form.number_field :reception_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :origin %>
+    <%= form.text_field :origin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recepcion_order_number %>
+    <%= form.number_field :recepcion_order_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reception_observation %>
+    <%= form.text_field :reception_observation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rrp_observation %>
+    <%= form.text_field :rrp_observation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reception_order_observation %>
+    <%= form.text_field :reception_order_observation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :container_seal %>
+    <%= form.text_field :container_seal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :recepcion_order_date %>
+    <%= form.datetime_select :recepcion_order_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reception_order_backup_document %>
+    <%= form.text_field :reception_order_backup_document %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ctnr_code %>
+    <%= form.number_field :ctnr_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -18,22 +18,20 @@
         <th>Items</th>
         <th>Ubicaciones</th>
         <th>Entregas</th>
-        <th></th>
+
       </tr>
     </thead>
 
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= customer.name %></td>
-          <td><%= customer.client_code %></td>
+          <td><%= link_to customer.name, customer_path(customer) %></td>
+          <td><%= link_to customer.client_code, customer_path(customer) %></td>
           <td><%= customer.products.count %></td>
           <td><%= customer.stocks.count(:quantity) %></td>
           <td><%= customer.warehouse_locations.count %></td>
           <td><%= customer.delivered_orders.count %></td>
-          <td><%= link_to 'Ver', customer, class:"btn btn-sm btn-info" %>
-          <%= link_to 'Editar', edit_customer_path(customer), class:"btn btn-sm btn-warning" %>
-          <%= link_to 'Borrar', customer, method: :delete, class:"btn btn-sm btn-danger", data: { confirm: '¿Estas Seguro?' } %></td>
+
         </tr>
       <% end %>
     </tbody>

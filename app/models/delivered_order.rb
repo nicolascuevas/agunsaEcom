@@ -76,15 +76,3 @@ class DeliveredOrder < ApplicationRecord
   
 
 end
-
-
-
-#     t.bigint "delivered_order_id", null: false
-#     t.bigint "product_id", null: false
-#     t.integer "quantity"
-#     t.string "lot_code"
-#     t.string "observation"
-#     t.datetime "created_at", precision: 6, null: false
-#     t.datetime "updated_at", precision: 6, null: false
-#     t.index ["delivered_order_id"], name: "index_delivered_order_products_on_delivered_order_id"
-#     t.index ["product_id"], name: "index_delivered_order_products_on_product_id"

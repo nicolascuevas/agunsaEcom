@@ -1,32 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Warehouse Locations</h1>
-<%= link_to 'New Warehouse Location', new_warehouse_location_path %>
+<h1>Ubicaciones en Bodega</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Warehouse</th>
-      <th>Customer</th>
-      <th>Height</th>
-      <th>Width</th>
-      <th>Depth</th>
-      <th>Type</th>
-      <th>Kind</th>
-      <th>Volume</th>
+      <th>Nombre</th>
+      <th>Bodega</th>
+      <th>Cliente</th>
+      <th>Alto</th>
+      <th>Ancho</th>
+      <th>Profundidad</th>
+      <th>Tipo</th>
+      <th>Forma</th>
+      <th>Volumen</th>
       <th>Area</th>
       <th>Items</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @warehouse_locations.each do |warehouse_location| %>
       <tr>
-        <td><%= warehouse_location.name %></td>
+        <td><%= link_to warehouse_location.name, warehouse_location_path(warehouse_location) %></td>
         <td><%= warehouse_location.warehouse.name %></td>
-        <td><%= warehouse_location.customer.client_code %></td>
+        <td><%= link_to warehouse_location.customer.client_code, customer_path(warehouse_location.customer) %></td>
         <td><%= warehouse_location.height %></td>
         <td><%= warehouse_location.width %></td>
         <td><%= warehouse_location.depth %></td>
@@ -35,14 +34,11 @@
         <td><%= warehouse_location.volume %></td>
         <td><%= warehouse_location.area %></td>
         <td><%= warehouse_location.products.sum(:quantity) %></td>
-        <td><%= link_to 'Show', warehouse_location %></td>
-        <td><%= link_to 'Edit', edit_warehouse_location_path(warehouse_location) %></td>
-        <td><%= link_to 'Destroy', warehouse_location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <div class="row">

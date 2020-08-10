@@ -1,0 +1,2 @@
+json.extract! reception, :id, :customer_id, :warehouse_id, :rrp_number, :guia_aga_o_fa, :customer_reference_document, :recepcion_backup_document, :start_unload, :finish_unload, :digitation_date, :reception_number, :origin, :recepcion_order_number, :reception_observation, :rrp_observation, :reception_order_observation, :container_seal, :recepcion_order_date, :reception_order_backup_document, :ctnr_code, :created_at, :updated_at
+json.url reception_url(reception, format: :json)

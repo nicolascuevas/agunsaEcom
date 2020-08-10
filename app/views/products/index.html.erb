@@ -33,7 +33,6 @@
       <th>CXP</th>
       <th>PXP</th>
       <th>PALLET</th>
-      <th></th>
     </tr>
     <%= submit_tag "buscar" %>
     </form>
@@ -53,9 +52,7 @@
         <td><%= product.boxes_per_pallet_floor %></td>
         <td><%= product.floors_per_pallet %></td>
         <td><%= product.boxes_per_pallet %></td>
-        <td><%= link_to 'Ver', product, class: "btn btn-sm btn-info" %>
-        <%= link_to 'Editar', edit_product_path(product), class: " btn btn-sm btn-warning" %>
-        <%= link_to 'Borrar', product, method: :delete, class:"btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

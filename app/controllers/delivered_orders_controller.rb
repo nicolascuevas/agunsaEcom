@@ -4,12 +4,13 @@ class DeliveredOrdersController < ApplicationController
   # GET /delivered_orders
   # GET /delivered_orders.json
   def index
-    @delivered_orders = DeliveredOrder.all
+    @delivered_orders = DeliveredOrder.all.order(order_number: :desc).paginate(page: params[:page], per_page: 50)
   end
 
   # GET /delivered_orders/1
   # GET /delivered_orders/1.json
   def show
+    @delivered_order_products = @delivered_order.delivered_order_products
   end
 
   # GET /delivered_orders/new

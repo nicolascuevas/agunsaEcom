@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_155805) do
+ActiveRecord::Schema.define(version: 2020_08_10_222958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,43 @@ ActiveRecord::Schema.define(version: 2020_08_06_155805) do
     t.index ["customer_id", "product_code"], name: "index_products_on_customer_id_and_product_code", unique: true
   end
 
+  create_table "reception_products", force: :cascade do |t|
+    t.bigint "reception_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity"
+    t.string "lot_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_reception_products_on_product_id"
+    t.index ["reception_id"], name: "index_reception_products_on_reception_id"
+  end
+
+  create_table "receptions", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "warehouse_id", null: false
+    t.integer "rrp_number"
+    t.integer "guia_aga_o_fa"
+    t.string "customer_reference_document"
+    t.string "recepcion_backup_document"
+    t.datetime "start_unload"
+    t.datetime "finish_unload"
+    t.datetime "digitation_date"
+    t.integer "reception_number"
+    t.string "origin"
+    t.integer "recepcion_order_number"
+    t.string "reception_observation"
+    t.string "rrp_observation"
+    t.string "reception_order_observation"
+    t.string "container_seal"
+    t.datetime "recepcion_order_date"
+    t.string "reception_order_backup_document"
+    t.integer "ctnr_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_receptions_on_customer_id"
+    t.index ["warehouse_id"], name: "index_receptions_on_warehouse_id"
+  end
+
   create_table "regions", force: :cascade do |t|
     t.bigint "country_id", null: false
     t.string "name"
@@ -174,6 +211,9 @@ ActiveRecord::Schema.define(version: 2020_08_06_155805) do
     t.decimal "pallet", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "aisle"
+    t.string "section"
+    t.string "level"
     t.index ["customer_id"], name: "index_warehouse_locations_on_customer_id"
     t.index ["warehouse_id", "name"], name: "index_warehouse_locations_on_warehouse_id_and_name", unique: true
     t.index ["warehouse_id"], name: "index_warehouse_locations_on_warehouse_id"
@@ -197,6 +237,10 @@ ActiveRecord::Schema.define(version: 2020_08_06_155805) do
   add_foreign_key "delivered_orders", "customer_clients"
   add_foreign_key "delivered_orders", "customers"
   add_foreign_key "delivered_orders", "warehouses"
+  add_foreign_key "reception_products", "products"
+  add_foreign_key "reception_products", "receptions"
+  add_foreign_key "receptions", "customers"
+  add_foreign_key "receptions", "warehouses"
   add_foreign_key "regions", "countries"
   add_foreign_key "stocks", "products"
   add_foreign_key "stocks", "warehouse_locations"

@@ -2,12 +2,13 @@
 
 <h1>Regions</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th>Country</th>
-      <th>Name</th>
-      <th>Sil code</th>
+      <th>País</th>
+      <th>Nombre</th>
+      <th>Codigo SIL</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,7 @@
   <tbody>
     <% @regions.each do |region| %>
       <tr>
-        <td><%= region.country_id %></td>
+        <td><%= link_to region.country.name,  %></td>
         <td><%= region.name %></td>
         <td><%= region.sil_code %></td>
         <td><%= link_to 'Show', region %></td>
@@ -25,7 +26,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 
 <br>
 
