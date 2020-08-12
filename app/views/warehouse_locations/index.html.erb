@@ -16,6 +16,7 @@
       <th>Forma</th>
       <th>Volumen</th>
       <th>Area</th>
+      <th>Lineas</th>
       <th>Items</th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
         <td><%= warehouse_location.kind %></td>
         <td><%= warehouse_location.volume %></td>
         <td><%= warehouse_location.area %></td>
+        <td><%= warehouse_location.products.count %></td>
         <td><%= warehouse_location.products.sum(:quantity) %></td>
       </tr>
     <% end %>

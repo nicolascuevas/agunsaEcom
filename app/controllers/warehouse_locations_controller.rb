@@ -4,12 +4,13 @@ class WarehouseLocationsController < ApplicationController
   # GET /warehouse_locations
   # GET /warehouse_locations.json
   def index
-    @warehouse_locations = WarehouseLocation.all.paginate(page: params[:page], per_page: 50)
+    @warehouse_locations = WarehouseLocation.all.order(name: :asc).paginate(page: params[:page], per_page: 50)
   end
 
   # GET /warehouse_locations/1
   # GET /warehouse_locations/1.json
   def show
+    @stocks = @warehouse_location.stocks
   end
 
   # GET /warehouse_locations/new

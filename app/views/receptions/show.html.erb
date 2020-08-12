@@ -141,7 +141,7 @@
                                             </tbody>
                                             <tfoot>
                                               <tr>
-                                                <th></th>
+                                                <th><%= "#{@reception_products.count} Lineas" if @reception_products.count > 1 %></th>
                                                 <th>Total</th>
                                                 <th><%= @reception_products.sum(:quantity) %></th>
                                                 <th></th>
