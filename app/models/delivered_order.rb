@@ -6,6 +6,7 @@ class DeliveredOrder < ApplicationRecord
   has_many :products, through: :delivered_order_products
 
 
+
   def self.import_agunsa_delivered_orders(customer)
     
     orders_info = AgunsaManager::GetDeliveredOrders.call(customer.client_code, customer.delivered_orders.last.present? ? customer.delivered_orders.last.delivery_number : nil )

@@ -8,7 +8,13 @@ class Customer < ApplicationRecord
 	has_many :receptions
 
 
-
+	def self.import_customers_data
+		Customer.all.each do |customer|
+			Product.import_agunsa_products(customer).deliver_later
+			#DataUpdaterJob.perform_later(customer)
+		end
+	end
+	
 
 	def self.import_agunsa_customers(customers)
 		customers.each do |customer_data|
@@ -18,6 +24,7 @@ class Customer < ApplicationRecord
 
 
 		end
+		
 	end
 
 	

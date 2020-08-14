@@ -1,4 +1,5 @@
 class Reception < ApplicationRecord
+  include Sidekiq::Worker
   belongs_to :customer
   belongs_to :warehouse
   has_many :reception_products
@@ -6,10 +7,8 @@ class Reception < ApplicationRecord
 
 
 
-
-
   def self.import_agunsa_receptions(customer)
-    
+    #customer = Customer.find(customer_id)
     receptions_info = AgunsaManager::GetReceptions.call(customer.client_code, customer.receptions.last.present? ? customer.receptions.last.reception_number : nil )
     warehouses = customer.warehouses
     puts receptions_info.count

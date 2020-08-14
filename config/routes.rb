@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
   resources :receptions
   resources :delivered_orders
   resources :custmer_client_addresses

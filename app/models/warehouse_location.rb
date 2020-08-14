@@ -9,6 +9,27 @@ class WarehouseLocation < ApplicationRecord
 
 
 
+  def self.import_agunsa_warehouse_locations(warehouse)
+
+    warehouse_locations_info = AgunsaManager::GetWarehouseLocations.call(warehouse.name)
+    warehouse_locations_info.each do |location_info|
+      warehouse.warehouse_locations.find_or_initialize_by({
+            name: location_info['codigo_ubicacion'].tr(" ", "")
+      }) do |warehouse_location|
+        warehouse_location.customer_id = warehouse.customer_id
+        warehouse_location.height = location_info['alto'].to_f
+        warehouse_location.width = location_info['ancho'].to_f
+        warehouse_location.depth = location_info['profundidad'].to_f
+        warehouse_location.location_type = location_info['tipo']
+        warehouse_location.kind = location_info['forma']
+
+        warehouse_location.save
+      end
+    end
+
+  end
+
+
   private
 
   def calculate_location_values

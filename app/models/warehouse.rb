@@ -15,6 +15,14 @@ class Warehouse < ApplicationRecord
       end
     end
   end
+
+
+  def self.import_agunsa_warehouse_info(customer)
+    customer.warehouses.each do |warehouse|
+      WarehouseLocation.import_agunsa_warehouse_locations(warehouse)
+    end
+  end
+  
   
 
 end

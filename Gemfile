@@ -18,7 +18,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -33,6 +33,8 @@ gem 'tiny_tds', '~> 0.7.0'
 gem 'bigdecimal', '~> 1.2', '>= 1.2.7'
 
 gem 'will_paginate', '~> 3.1.0'
+
+gem "sidekiq"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
