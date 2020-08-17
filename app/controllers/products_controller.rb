@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @stocks = @product.stocks
   end
 
   # GET /products/new

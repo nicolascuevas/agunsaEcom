@@ -1,11 +1,17 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Paises', countries_path %></li>
+    <li class="breadcrumb-item active"><%= @country.name %></li>
+  </ol>
+</nav>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @country.name %>
-</p>
+<h1><%= @country.name %></h1>
 
-<h1>Regiones</h1>
+
+<h2>Regiones</h2>
 <%= link_to 'Nueva Region', new_country_region_path(@country), class: "btn btn-sm btn-warning" %>
 <br>
 <br>

@@ -1,3 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item active">Productos</li>
+  </ol>
+</nav>
+
+
+
 <p id="notice"><%= notice %></p>
 
 <% if @products.count > 0 %>
@@ -41,7 +50,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.customer.client_code %></td>
+        <td><%= link_to product.customer.client_code, customer_path(product.customer_id) %></td>
         <td><%= link_to product.product_code, product %></td>
         <td><%= product.name %></td>
         <td><%= product.units_per_box %></td>

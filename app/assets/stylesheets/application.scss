@@ -40,3 +40,29 @@
 body {
   font-family: 'Oswald', sans-serif !important;
 }
+
+
+
+.breadcrumb {
+	margin-top: 1rem;
+	background-color: #343a40;
+
+	li.breadcrumb-item{
+
+		&.active {
+			color: #cfcfcf;
+		}
+
+		a{
+			color: #ffffff;
+		}
+	}
+
+}
+
+.nav-link[data-toggle].collapsed:before {
+    content: " ▾";
+}
+.nav-link[data-toggle]:not(.collapsed):before {
+    content: " ▴";
+}

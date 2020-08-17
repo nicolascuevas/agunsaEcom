@@ -1,4 +1,15 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Bodegas', warehouses_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Ubicaciones', warehouse_locations_path %></li>
+    <li class="breadcrumb-item active"><%= @warehouse_location.name %></li>
+  </ol>
+</nav>
+
+
 <p id="notice"><%= notice %></p>
+
 
 <h1><%= @warehouse_location.name %></h1>
 <h2><%= @warehouse_location.warehouse.name %> | <%= @warehouse_location.customer.client_code %></h2>

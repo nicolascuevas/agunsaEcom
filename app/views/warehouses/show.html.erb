@@ -1,16 +1,21 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'inicio', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'inicio', warehouses_path %></li>
+    <li class="breadcrumb-item active"><%= @warehouse.name %></li>
+  </ol>
+</nav>
+
+
+
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Importar Ubicaciones', import_agunsa_warehouse_locations_path(warehouse_id: @warehouse.id), method: :post, class:"btn btn-sm btn-warning" %>
 
-<p>
-  <strong>Customer:</strong>
-  <%= @warehouse.customer_id %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @warehouse.name %>
-</p>
+  <h1><%= @warehouse.customer.client_code %></h1>
 
-<%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |
-<%= link_to 'Back', warehouses_path %>
+  <h2><%= @warehouse.name %></h2>
+
+  <p>Ubicaciones: <%= link_to @warehouse.warehouse_locations.count, warehouse_locations_path({warehouse_id: @warehouse.id}) %></p>
+

@@ -1,20 +1,17 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Paises', countries_path %></li>
+    <li class="breadcrumb-item"><%= link_to @country.name, country_path(@country) %></li>
+    <li class="breadcrumb-item active"><%= @region.name %></li>
+  </ol>
+</nav>
+
+
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_country_region_path(@country, @region) %> |
-<%= link_to 'Back', country_path(@country) %>
+  <h1><%= @region.name %></h1>
 
-<hr>
-
-
-<p>
-  <strong>Country:</strong>
-  <%= @region.country_id %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @region.name %>
-</p>
 
 <p>
   <strong>Sil code:</strong>
@@ -23,8 +20,9 @@
 <br>
 
 
-<h1>Coumunas</h1>
+<h2>Coumunas</h2>
 <%= link_to 'Nueva Comuna', new_country_region_commune_path(@country,  @region) %>
+
 
 <div class="table-responsive">
   <table class="table table-striped table-sm">

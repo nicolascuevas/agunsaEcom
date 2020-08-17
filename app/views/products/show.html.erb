@@ -1,85 +1,105 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Clientes', customers_path %></li>
+    <li class="breadcrumb-item"><%= link_to @product.customer.client_code, customer_path(@product.customer) %></li>
+    <li class="breadcrumb-item"><%= link_to 'Productos', products_path({customer_id: @product.customer_id}) %></li>
+    <li class="breadcrumb-item active"><%= @product.name %></li>
+  </ol>
+</nav>
+
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Editar', edit_product_path(@product), class: "btn btn-sm btn-warning" %> |
 <%= link_to 'Volver', sku_finder_path, class: "btn btn-sm btn-info" %>
 
 
-<p>
-  <strong>Cliente:</strong>
-  <%= @product.customer.name %>
-</p>
 
-<p>
-  <strong>Codigo producto:</strong>
-  <%= @product.product_code %>
-</p>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Codigo</th>
+        <th>Nombre</th>
+        <th>Super Familia</th>
+        <th>Familia</th>
+        <th>Sub Familia</th>
+        <th>Expira?</th>
+        <th>Litros</th>
+        <th>Estado</th>
+        <th>UxC</th>
+        <th>Peso (Kg)</th>
+        <th>Alto</th>
+        <th>Ancho</th>
+        <th>Largo</th>
+        <th>Cajas Pata</th>
+        <th>Patas</th>
+        <th>Cajas Pallet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to @product.customer.client_code, customer_path(@product.customer) %></td>
+        <td><%= @product.product_code %></td>
+        <td><%= @product.name %></td>
+        <td><%= @product.super_family %></td>
+        <td><%= @product.family %></td>
+        <td><%= @product.sub_family %></td>
+        <td><%= @product.is_expire %></td>
+        <td><%= @product.liters %></td>
+        <td><%= @product.state %></td>
+        <td><%= @product.units_per_box %></td>
+        <td><%= @product.weight %></td>
+        <td><%= @product.height %></td>
+        <td><%= @product.width %></td>
+        <td><%= @product.depth %></td>
+        <td><%= @product.boxes_per_pallet_floor %></td>
+        <td><%= @product.floors_per_pallet %></td>
+        <th><%= @product.boxes_per_pallet %></th>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @product.name %>
-</p>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<p>
-  <strong>Super Familia:</strong>
-  <%= @product.super_family %>
-</p>
 
-<p>
-  <strong>Familia:</strong>
-  <%= @product.family %>
-</p>
 
-<p>
-  <strong>Sub Familia:</strong>
-  <%= @product.sub_family %>
-</p>
 
-<p>
-  <strong>¿Expira?:</strong>
-  <%= @product.is_expire %>
-</p>
+<h2>Ubicaciones</h2>
 
-<p>
-  <strong>Litros:</strong>
-  <%= @product.liters %>
-</p>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Ubicacion</th>
+      <th>Codigo</th>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Entrando</th>
+      <th>Saliendo</th>
+      <th>Bloqueada</th>
+      <th>Lote</th>
+      <th>Elaboracion Lote</th>
+      <th>Vencimiento Lote</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Estado:</strong>
-  <%= @product.state %>
-</p>
-
-<p>
-  <strong>Unidades por caja:</strong>
-  <%= @product.units_per_box %>
-</p>
-
-<p>
-  <strong>Peso (Kg):</strong>
-  <%= @product.weight %>
-</p>
-
-<p>
-  <strong>Alto(cm):</strong>
-  <%= @product.height %>
-</p>
-
-<p>
-  <strong>Ancho (cm):</strong>
-  <%= @product.width %>
-</p>
-
-<p>
-  <strong>Largo(cm:</strong>
-  <%= @product.depth %>
-</p>
-
-<p>
-  <strong>Cajas por pallet:</strong>
-  <%= @product.boxes_per_pallet %>
-</p>
-
-<p>
-  <strong>Cajas por pata:</strong>
-  <%= @product.boxes_per_pallet_floor %>
-</p>
+  <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= link_to stock.warehouse_location.name, warehouse_location_path(stock.warehouse_location) %></td>
+        <td><%= link_to stock.product.product_code, product_path(stock.product) %></td>
+        <td><%= link_to stock.product.name, product_path(stock.product) %></td>
+        <td><%= stock.quantity %></td>
+        <td><%= stock.incoming_quantity %></td>
+        <td><%= stock.outgoing_quantity %></td>
+        <td><%= stock.blocked_quantity %></td>
+        <td><%= stock.lot_code %></td>
+        <td><%= stock.lot_elaboration_date %></td>
+        <td><%= stock.lot_expiration_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

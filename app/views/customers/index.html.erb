@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item active">Clientes</li>
+  </ol>
+</nav>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Clientes</h1>
@@ -28,7 +35,7 @@
         <tr>
           <td><%= link_to customer.name, customer_path(customer) %></td>
           <td><%= link_to customer.client_code, customer_path(customer) %></td>
-          <td><%= customer.products.count %></td>
+          <td><%= link_to customer.products.count, products_path({customer_id: customer}) %></td>
           <td><%= customer.stocks.sum(:quantity) %></td>
           <td><%= customer.warehouse_locations.count %></td>
           <td><%= customer.delivered_orders.count %></td>

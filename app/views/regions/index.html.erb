@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+    <li class="breadcrumb-item active">Regiones</li>
+  </ol>
+</nav>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Regions</h1>
@@ -9,7 +16,7 @@
       <th>País</th>
       <th>Nombre</th>
       <th>Codigo SIL</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -19,9 +26,9 @@
         <td><%= link_to region.country.name,  %></td>
         <td><%= region.name %></td>
         <td><%= region.sil_code %></td>
-        <td><%= link_to 'Show', region %></td>
-        <td><%= link_to 'Edit', edit_region_path(region) %></td>
-        <td><%= link_to 'Destroy', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', region %>
+        <%= link_to 'Editar', edit_region_path(region) %>
+        <%= link_to 'Borrar', region, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
