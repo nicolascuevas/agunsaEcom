@@ -14,7 +14,7 @@ class WarehouseLocation < ApplicationRecord
     warehouse_locations_info = AgunsaManager::GetWarehouseLocations.call(warehouse.name)
     warehouse_locations_info.each do |location_info|
       warehouse.warehouse_locations.find_or_initialize_by({
-            name: location_info['codigo_ubicacion'].tr(" ", "")
+            name: location_info['codigo_ubicacion'].tr(" ", "").downcase
       }) do |warehouse_location|
         warehouse_location.customer_id = warehouse.customer_id
         warehouse_location.height = location_info['alto'].to_f

@@ -18,7 +18,7 @@ class Customer < ApplicationRecord
 
 	def self.import_agunsa_customers(customers)
 		customers.each do |customer_data|
-			customer = Customer.find_or_create_with_address(
+			customer = Customer.find_or_create_by(
 				{  
 					client_code: customer_data['codigo_cliente'].tr(" ", ""),
 					name: customer_data['nombre'].tr("  ", "")

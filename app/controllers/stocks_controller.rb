@@ -55,7 +55,10 @@ class StocksController < ApplicationController
     @stock = AgunsaManager::GetStock.call()
     number = 1
     @stock.each do |stock_data|
-      @warehouse_location = WarehouseLocation.where(name: stock_data['codigo_ubicacion'].tr(" ","")).first
+      @warehouse_location = WarehouseLocation.where("name ilike ?", "%#{stock_data['codigo_ubicacion'].tr(" ","")}%").first
+      unless (@warehouse_location)
+        #binding.pry
+      end
       @product = @warehouse_location.customer.products.where("LOWER(product_code) LIKE LOWER(?)", "%#{stock_data['codigo_producto'].tr(" ", "")}%").first
       puts "Numero: #### #{number}"
       number +=1
