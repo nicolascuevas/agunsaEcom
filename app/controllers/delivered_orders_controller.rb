@@ -4,7 +4,15 @@ class DeliveredOrdersController < ApplicationController
   # GET /delivered_orders
   # GET /delivered_orders.json
   def index
-    @delivered_orders = DeliveredOrder.all.order(order_number: :desc).paginate(page: params[:page], per_page: 50)
+    @delivered_orders = DeliveredOrder.all
+    @delivered_orders = @delivered_orders.where(customer_id: params[:customer_id]) if params[:customer_id].present?
+    @delivered_orders = @delivered_orders.where("delivery_number = #{params[:en]}") if params[:en].present?
+    @delivered_orders = @delivered_orders.where("order_number = #{params[:od]}") if params[:od].present?
+    @delivered_orders = @delivered_orders.where("delivery_route_number = #{params[:hr]}") if params[:hr].present?
+    @delivered_orders = @delivered_orders.where("order_backup_document ILIKE ?", "%"+params[:backup_document]+"%") if params[:backup_document].present?
+    @delivered_orders = @delivered_orders.where("distribution_center_out_date = #{params[:delivery_date]}") if params[:hr].present?   
+
+     @delivered_orders =  @delivered_orders.order(order_number: :desc).paginate(page: params[:page], per_page: 50)
   end
 
   # GET /delivered_orders/1

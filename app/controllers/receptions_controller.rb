@@ -4,7 +4,14 @@ class ReceptionsController < ApplicationController
   # GET /receptions
   # GET /receptions.json
   def index
-    @receptions = Reception.all.order(reception_number: :desc).paginate(page: params[:page], per_page: 50)
+    @receptions = Reception.all
+    @receptions = @receptions.where(customer_id: params[:customer_id]) if params[:customer_id].present?
+    @receptions = @receptions.where("rrp_number = #{params[:rrp]}") if params[:rrp].present?
+    @receptions = @receptions.where("reception_number = #{params[:re]}") if params[:re].present?
+    @receptions = @receptions.where("recepcion_order_number = #{params[:or]}") if params[:or].present?
+    @receptions = @receptions.where("recepcion_backup_document ILIKE ?", "%"+params[:backup_document]+"%") if params[:backup_document].present?
+
+    @receptions = @receptions.order(reception_number: :desc).paginate(page: params[:page], per_page: 50)
   end
 
   # GET /receptions/1

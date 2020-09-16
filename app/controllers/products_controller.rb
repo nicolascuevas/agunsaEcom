@@ -15,8 +15,6 @@ class ProductsController < ApplicationController
     @products = @products.where("height ILIKE ?", "%"+params[:height]+"%") if params[:height].present?
     @products = @products.where("depth ILIKE ?", "%"+params[:depth]+"%") if params[:depth].present?
 
-    @products = @products.where("depth ILIKE ?", "%"+params[:depth]+"%") if params[:depth].present?
-    @products = @products.where("depth ILIKE ?", "%"+params[:depth]+"%") if params[:depth].present?
 
     @products = @products.order(name: :desc).paginate(page: params[:page], per_page: 50)
 

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
@@ -7,10 +5,37 @@
   </ol>
 </nav>
 
+<p id="notice"><%= notice %></p>
+
+<h2>Entregas</h2>
+
+<%= form_tag(delivered_orders_path, method: :get) do %>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= select_tag 'customer_id', options_for_select(Customer.all.order(name: :asc).collect{ |u| [u.name, u.id] }, selected: params[:customer_id]), :prompt => "TODOS", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= text_field_tag 'en', params[:en], placeholder: "EN", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= text_field_tag 'od', params[:od], placeholder: "OD", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= text_field_tag 'hr', params[:hr], placeholder: "HR", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= text_field_tag 'backup_document', params[:backup_document], placeholder: "Doc Respaldo", class: "form-control" %>
+    </div>
 
 
-<h1>Entregas</h1>
-
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= submit_tag "BUSCAR", class:"btn btn-sm btn-info" %>
+    </div>
+  </div>
+<br>
+<% end %>
 
 <table class='table table-striped'>
   <thead>
@@ -25,7 +50,7 @@
       <th>Documento Respaldo EN</th>
       <th>Observacion</th>
       <th>HR</th>
-      <th></th>
+
     </tr>
   </thead>
 
@@ -43,7 +68,7 @@
         <td><%= delivered_order.order_observation %></td>
         <td><%= delivered_order.delivery_route_number %></td>
 
-        <td><%= link_to 'Ver', delivered_order, class: "btn btn-sm btn-success" %>
+
       </tr>
     <% end %>
   </tbody>

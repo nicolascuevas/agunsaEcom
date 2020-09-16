@@ -1,9 +1,46 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item active">Recepciones</li>
+  </ol>
+</nav>
+
+
 <p id="notice"><%= notice %></p>
 
-<h1>Receptions</h1>
+<h2>Recepciones</h2>
+
+<%= form_tag(receptions_path, method: :get) do %>
+  <div class="row">
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= select_tag 'customer_id', options_for_select(Customer.all.order(name: :asc).collect{ |u| [u.name, u.id] }, selected: params[:customer_id]), :prompt => "TODOS", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= number_field_tag 're', params[:re], placeholder: "RE", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= number_field_tag 'rrp', params[:rrp], placeholder: "RRP", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= number_field_tag 'or', params[:or], placeholder: "OR", class: "form-control" %>
+    </div>
+    <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+      <%= text_field_tag 'backup_document', params[:backup_document], placeholder: "Doc Respaldo", class: "form-control" %>
+    </div>
+
+
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <%= submit_tag "BUSCAR", class:"btn btn-sm btn-info" %>
+    </div>
+  </div>
+<br>
+<% end %>
+
 
 <div class="table-responsive">
-  <table class="table table-striped table-sm">
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Cliente</th>

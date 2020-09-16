@@ -4,7 +4,14 @@ class WarehouseLocationsController < ApplicationController
   # GET /warehouse_locations
   # GET /warehouse_locations.json
   def index
-    @warehouse_locations = WarehouseLocation.all.order(name: :asc).paginate(page: params[:page], per_page: 50)
+    @warehouse_locations = WarehouseLocation.all
+    @warehouse_locations = @warehouse_locations.where(customer_id: params[:customer_id]) if params[:customer_id].present?
+    @warehouse_locations = @warehouse_locations.where(warehouse_location_id: params[:warehouse_location_id]) if params[:warehouse_location_id].present?
+    @warehouse_locations = @warehouse_locations.where("name ILIKE '%#{params[:name]}%'") if params[:name].present?
+    @warehouse_locations = @warehouse_locations.where("location_type ILIKE '%#{params[:location_type]}%'") if params[:location_type].present?
+    @warehouse_locations = @warehouse_locations.where("kind ILIKE '%#{params[:kind]}%'") if params[:kind].present?
+
+    @warehouse_locations = @warehouse_locations.order(name: :asc).paginate(page: params[:page], per_page: 50)
   end
 
   # GET /warehouse_locations/1

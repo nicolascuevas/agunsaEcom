@@ -1,3 +1,11 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to 'Inicio', root_path %></li>
+    <li class="breadcrumb-item"><%= link_to 'Recepciones', receptions_path %></li>
+    <li class="breadcrumb-item active"><%= @reception.reception_number %></li>
+  </ol>
+</nav>
+
 <p id="notice"><%= notice %></p>
 
 <p>

@@ -5,36 +5,42 @@
   </ol>
 </nav>
 
-
-
 <p id="notice"><%= notice %></p>
 
-<% if @products.count > 0 %>
 
-<h1>Productos Encontrados</h1>
-<%= link_to 'Buscar otro Producto', sku_finder_path, class:"btn btn-sm btn-success" %>
+<h2>Productos</h2>
 
+
+<%= form_tag(products_path, method: :get) do %>
+  <div class="row">
+    <div class="col-2">
+      <%= select_tag 'customer_id', options_for_select(Customer.all.order(name: :asc).collect{ |u| [u.name, u.id] }, selected: params[:customer_id]), :prompt => "TODOS", class: "form-control" %>
+    </div>
+    <div class="col-2">
+      <%= text_field_tag 'sku', params[:sku], placeholder: "SKU", class: "form-control" %>
+    </div>
+    <div class="col-2">
+      <%= text_field_tag 'name', params[:name], placeholder: "Nombre", class: "form-control" %>
+    </div>
+  
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <%= submit_tag "BUSCAR", class:"btn btn-sm btn-info" %>
+    </div>
+  </div>
+<br>
+<% end %>
 
 <div class="table-responsive">
 
-
-  <table class="table table-striped table-sm">
+  <table class="table table-striped">
   <thead>
-    <form>
-    <%= form_tag(products_path, method: :get) %>
-    <tr class='filters'>
-      <th>Cliente <br>
-        <%= select_tag 'customer_id', options_for_select(Customer.all.collect{ |u| [u.name, u.id] }), class: "form-control" %>
-      </th>
-      <th>SKU <br>
-        <%= text_field_tag 'sku', "", class: "form-control" %>
-      </th>
-      <th>Nombre <br> 
-        <%= text_field_tag 'name', "", class: "form-control" %>
-      </th>
-      <th>Unidades por caja <br>
-        <%= text_field_tag 'units_per_box', "", class: "form-control" %>
-      </th>
+    <tr>
+      <th>Cliente</th>
+      <th>SKU</th>
+      <th>Nombre</th>
+      <th>Unidades por caja</th>
       <th>Peso</th>
       <th>Alto(mm)</th>
       <th>Ancho(mm)</th>
@@ -43,8 +49,6 @@
       <th>PXP</th>
       <th>PALLET</th>
     </tr>
-    <%= submit_tag "buscar" %>
-    </form>
   </thead>
 
   <tbody>
@@ -73,11 +77,3 @@
     <%= will_paginate @products %>
   </div>
 </div>
-
-
-<% else %>
-
-<h1>No se encontraron coincidencias</h1>
-<%= link_to 'Buscar otro Producto', sku_finder_path, class:"btn btn-sm btn-success" %>
-
-<% end%>
