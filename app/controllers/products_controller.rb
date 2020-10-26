@@ -73,10 +73,11 @@ class ProductsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @products = AgunsaManager::GetProducts.call(@customer.client_code)
     @products.each do |product_info|
-      @customer.products.find_or_initialize_by({
-            name: product_info['nombre'],
+      Product.where(
+            customer_id: @customer.id,
             product_code: product_info['codigo_producto'].tr(" ", "")
-      }) do |product|
+      ).first_or_initialize do |product|
+        product.name = product_info['nombre']
         product.super_family =  product_info['nombre_superfamilia_cliente']
         product.family =  product_info['nombre_familia_cliente']
         product.sub_family =  product_info['nombre_subfamilia_cliente']

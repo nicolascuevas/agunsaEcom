@@ -55,10 +55,11 @@ class StocksController < ApplicationController
     @stock = AgunsaManager::GetStock.call()
     number = 1
     @stock.each do |stock_data|
-      @warehouse_location = WarehouseLocation.where("name ilike ?", "%#{stock_data['codigo_ubicacion'].tr(" ","")}%").first
+      @warehouse_location = WarehouseLocation.where("name ilike ?", "%#{stock_data['codigo_ubicacion'].downcase.tr(" ","")}%").first
       unless (@warehouse_location)
-        #binding.pry
+        binding.pry
       end
+      begin
       @product = @warehouse_location.customer.products.where("LOWER(product_code) LIKE LOWER(?)", "%#{stock_data['codigo_producto'].tr(" ", "")}%").first
       puts "Numero: #### #{number}"
       number +=1
@@ -67,6 +68,7 @@ class StocksController < ApplicationController
       end
       if !@product
       puts "####333#####"
+
         puts stock_data['codigo_producto']
       end
       if @warehouse_location.stocks.where(warehouse_location_id: @warehouse_location.id, product_id: @product.id).count > 0
@@ -88,6 +90,9 @@ class StocksController < ApplicationController
         stock.blocked_quantity = stock_data['Cantidad_producto_bloqueado']
         stock.save
       end
+    rescue
+     puts "error"
+    end
     end
 
   end

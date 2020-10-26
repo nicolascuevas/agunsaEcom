@@ -48,6 +48,8 @@
       <th>CXP</th>
       <th>PXP</th>
       <th>PALLET</th>
+      <th>Ubicaciones</th>
+      <th>Cantidad</th>
     </tr>
   </thead>
 
@@ -65,6 +67,8 @@
         <td><%= product.boxes_per_pallet_floor %></td>
         <td><%= product.floors_per_pallet %></td>
         <td><%= product.boxes_per_pallet %></td>
+        <td><%= product.stocks.count %></td>
+        <td><%= product.stocks.sum(:quantity) %></td>
 
       </tr>
     <% end %>
